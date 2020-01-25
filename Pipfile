@@ -1,0 +1,20 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+Flask = "*"
+pylint = "*"
+autopep8 = "*"
+Flask-SQLAlchemy = "*"
+Flask-Migrate = "*"
+Flask-RESTful = "*"
+Flask-Cors = "*"
+pyjwt = "*"
+
+[dev-packages]
+pylint = "<2.0.0"
+
+[requires]
+python_version = "3.7"

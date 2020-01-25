@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "database": "${workspaceFolder}/src/database/app.db",
+            "dialect": "SQLite",
+            "name": "dev_db"
+        }
+    ],
+    "sqltools.useNodeRuntime": true,
+    "python.pythonPath": "/home/valtair/.local/share/virtualenvs/Crud-vfcAWJ_-/bin/python"
+}
