@@ -3,7 +3,7 @@ from instance import app_config
 from flask_migrate import Migrate
 from app.models import db
 
-
+""" test de commit"""
 def _instances_blueprint(app):
     from app.middlewares import bp as middlewares
     app.register_blueprint(middlewares)
