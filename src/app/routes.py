@@ -9,4 +9,5 @@ CORS(bp)
 
 
 # api routes using flask restful
-api.add_resource(Session, '/session/<string:auth_id>')
+api.add_resource(Session, '/session')
+api.add_resource(User, '/user')

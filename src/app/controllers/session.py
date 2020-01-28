@@ -1,12 +1,13 @@
-from flask_restful import Resource
+from flask_restful import Resource, request
+
 from app.middlewares import encoded_token, decode_token
 
 
-
 class  Session(Resource):
-    def get(self, auth_id):
-        token = encoded_token(auth_id)
-        print(decode_token(token))
-        return {"Token": token}
+    def post(self):
+        json_data = request.get_json()
+        print(json_data)
+        # token = encoded_token(auth_id)
+        return 'ok'
 
 

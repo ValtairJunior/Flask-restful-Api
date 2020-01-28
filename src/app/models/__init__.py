@@ -11,4 +11,5 @@ def config_db(app):
     app.db = db
 
 
-from app.models import user, friendship, message
+from app.models import *
+
