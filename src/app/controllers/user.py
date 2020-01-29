@@ -19,7 +19,8 @@ class UserController(Resource):
         return {"message": "User successfully registered"}, 200
     
     def get(self):
-        result = verify_token()
+        token = request.headers.get('authorization')
+        result = verify_token(token)
         return result
 
     def put(self):
