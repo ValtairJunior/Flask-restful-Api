@@ -1,27 +1,29 @@
-from flask_restful import Resource, current_app
-from flask import request
-from app.middlewares.serializers import UserSchema 
-from app.models.user import User
+from flask_restful import Resource, current_app, request
+from app.models.user import set_password, User
+from app.middlewares.auth import decode_token, verify_token
 
-# user_schema = UserSchema()
+user_model = User()
 
-class User(Resource):
+
+class UserController(Resource):
     def post(self):
         json_data = request.get_json()
-        data = User(name ='livro', email = 'email', password_hash = 'senha')
-        
-        # data = user_schema.load(json_data)
-        # current_app.db.session.add(data)
-        # current_app.db.session.commit()
-        
-        print(User.query.all())
-        return "salvo"
-        
-    def get():
+        user = user_model.query.filter_by(email=json_data["email"]).first()
+        if user:
+            return {"message": "User email already exists"}, 400
+        user_model.name = json_data["name"]
+        user_model.email = json_data["email"] 
+        user_model.password = set_password(json_data["password"])
+        current_app.db.session.add(user_model)
+        current_app.db.session.commit()
+        return {"message": "User successfully registered"}, 200
+    
+    def get(self):
+        result = verify_token()
+        return result
+
+    def put(self):
         pass
     
-    def put():
-        pass
-    
-    def delete():
+    def delete(self):
         pass

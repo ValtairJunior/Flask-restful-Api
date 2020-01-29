@@ -1,4 +1,4 @@
-from . import db
+from app.models import db
 from datetime import datetime
 
 
@@ -10,5 +10,6 @@ class Friendship(db.Model):
     confirmation = db.Column(db.Boolean(), default=False)
     chat = db.Column(db.Boolean(), default=False)
     create_on = db.Column(db.DateTime(), default=datetime.utcnow())
-    update_on = db.Column(db.DateTime(), default=datetime.utcnow(), onupdate=datetime.utcnow())
-
+    update_on = db.Column(db.DateTime(), default=datetime.utcnow(), 
+                          onupdate = datetime.utcnow()) 
+    

@@ -14,9 +14,11 @@ Flask-Cors = "*"
 pyjwt = "*"
 marshmallow-sqlalchemy = "*"
 flask-marshmallow = "*"
+requests-mock = "*"
 
 [dev-packages]
 pylint = "*"
+pylama = "*"
 
 [requires]
 python_version = "3.7"
