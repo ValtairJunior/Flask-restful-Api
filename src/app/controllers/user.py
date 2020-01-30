@@ -10,21 +10,32 @@ class UserController(Resource):
         json_data = request.get_json()
         user = user_model.query.filter_by(email=json_data["email"]).first()
         if user:
-            return {"message": "User email already exists"}, 400
+            return {"message": "User email already exists","status": 400 }
         user_model.name = json_data["name"]
         user_model.email = json_data["email"] 
         user_model.password = set_password(json_data["password"])
         current_app.db.session.add(user_model)
         current_app.db.session.commit()
-        return {"message": "User successfully registered"}, 200
+        return {"message": "User successfully registered", "status": 200}
     
     def get(self):
         token = request.headers.get('authorization')
         result = verify_token(token)
-        return result
+        print(result)
+        if "message" in result:
+            return result
+        user_data = user_model.query.filter_by(id=result["id"]).first()
+        user = {"name": user_data.name, "email": user_data.email}
+        return user
 
     def put(self):
-        pass
+        token = request.headers.get('authorization')
+        result = verify_token(token)
+        if "message" in result:
+            return result
+        json_data = request.get_json()
+        print(json_data)
+        return {"result": result}
     
     def delete(self):
         pass

@@ -1,3 +1,3 @@
 from app.controllers.session import Session
-from app.controllers.user import *
+from app.controllers.user import UserController
 

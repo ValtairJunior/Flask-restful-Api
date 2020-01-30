@@ -1,5 +1,5 @@
 from unittest import TestCase
-from app.middlewares.auth import *
+from app.middlewares.auth import verify_token, encoded_token
 import requests
 import requests_mock
 import jwt
